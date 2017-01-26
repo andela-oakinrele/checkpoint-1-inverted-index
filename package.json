@@ -2,7 +2,7 @@
   "name": "inverted-index",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
     "cover": "istanbul cover node_modules/jasmine/bin/jasmine.js",

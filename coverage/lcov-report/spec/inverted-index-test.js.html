@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for spec/inverted-index-test.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">spec/</a> inverted-index-test.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>52/52</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>52/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="missing-if-branch" title="else path not taken" >E</span>if(typeof InvertedIndex === "undefined") {
+  InvertedIndex = require('../src/inverted-index.js');
+}
+&nbsp;
+//console.log(InvertedIndex, 'here');
+const books =
+{
+  "correct": [
+      {
+        "title": "Alice in Wonderland",
+        "text": "Alice falls into a rabbit hole and enters a world full of imagination."
+      },
+&nbsp;
+      {
+        "title": "The Lord of the Rings: The Fellowship of the Ring.",
+        "text": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
+      }
+],
+ "wrong":[
+      {
+        "name": "Alice in Nigeria",
+        "text": "Alice went to Ikeja City Mall."
+      },
+&nbsp;
+      {
+        "name": "The Lord of the Rings: The Fellowship of the Ring.",
+        "text": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
+      }
+]
+};
+describe('Test suite for Inverted Index', () =&gt; {
+ const index = new InvertedIndex();
+ let idx = index.createIndex('books.json',books.correct);
+    describe('Read book data', ()=&gt;{
+       it('Should confirm that the file is a JSON file', () =&gt; {
+          expect(index.validateDoc(books.correct)).toBe(true);
+          expect(index.validateDoc(books.wrong)).toBe(false);
+       });
+       it('Should confirm that the JSON file is not Empty', ()=&gt;{
+          expect(index.validateDoc(books.correct)).toBe(true);
+       });
+        it('Should ensure each object in JSON array contains a property whose value is a string.', ()=&gt;{
+          expect(index.validateDoc(books.correct)).toBe(true);
+       });
+    });
+&nbsp;
+    describe('Populate Index',()=&gt;{
+&nbsp;
+      const mykeys = Object.keys(index.createIndex("books.json",books.correct)) ;
+&nbsp;
+       it('Should ensure index is created once JSON file has been read',()=&gt;{
+          expect(typeof idx).toBe('object');
+       });
+       it('Should ensure index is correct.',()=&gt;{
+          expect(idx.alice).toEqual([0]);
+          expect(idx.a).toEqual([0,1]);
+       });
+       it('Should ensure each object in JSON array contains a property whose value is a string.',()=&gt;{
+          for(let i =0; i&lt;mykeys.length; i++) {
+            expect(typeof mykeys[i]).toBe('string');
+          }
+       });
+    });
+&nbsp;
+    describe('Search Index',()=&gt;{
+        let searchResult = index.searchIndex(['books.json'],'a');
+         it('Should ensure index returns the correct results when searched.',()=&gt;{
+           expect(searchResult['a']['books.json']).toEqual([0,1]);
+         });
+         let arrayResult = index.searchIndex(['books.json'],['unusual', 'alice']);
+         it('Should ensure searchIndex can handle an array of search terms.',()=&gt;{
+          expect(arrayResult['unusual']['books.json']).toEqual([1]);
+          expect(arrayResult['alice']['books.json']).toEqual([0]);
+         });
+&nbsp;
+        let variedResult = index.searchIndex(['books.json'],'the', 'lord','man');
+        it('Should ensure searchIndex can handle a varied number of search terms as arguments.',()=&gt;{
+          expect(variedResult['the']['books.json']).toEqual([1]);
+          expect(variedResult['lord']['books.json']).toEqual([1]);
+          expect(variedResult['man']['books.json']).toEqual([1]);
+        });
+&nbsp;
+        it('Should ensure search does not take too long to execute.',()=&gt;{
+          let start = Date.now();
+          let searchData = index.searchIndex(['books.json'], 'alice','the', 'man');
+          let end = Date.now();
+          const final = end - start ;
+          expect(final).toBeLessThan(0.05);
+        });
+        it('Should ensure searchIndex goes through all indexed files if a filename is not passed, i.e filename argument should be made optional',()=&gt;{
+           let searchall = index.searchIndex(null,'the', 'lord','man');
+            expect(searchall['the']['books.json']).toEqual([1]);
+            expect(searchall['lord']['books.json']).toEqual([1]);
+            expect(searchall['man']['books.json']).toEqual([1]);
+        });
+    });
+&nbsp;
+    describe('Get Index',()=&gt;{
+         it('Should ensure getIndex method takes a string argument that specifies the location of the JSON data.',()=&gt;{
+           let search = index.getIndex("books.json");
+            expect(typeof search).toBe('object');
+         });
+&nbsp;
+    });
+&nbsp;
+&nbsp;
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jan 21 2017 19:02:59 GMT+0100 (WAT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

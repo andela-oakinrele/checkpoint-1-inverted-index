@@ -4,8 +4,43 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/jasmine",
+    "cover": "istanbul cover node_modules/jasmine/bin/jasmine.js",
+    "send-cov": "coveralls < coverage/lcov.info",
+    "coveralls": "jscoverage lib && YOURPACKAGE_COVERAGE=1 nodeunit --reporter=lcov test | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gottsohn/inverted-index.git"
+  },
+  "engines": {
+    "node": "6.9.4",
+    "npm": "3.10.10"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gottsohn/inverted-index/issues"
+  },
+  "homepage": "https://github.com/gottsohn/inverted-index#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "jasmine": "^2.5.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "coveralls": "^2.11.15",
+    "eslint-config-airbnb": "^14.0.0",
+    "gulp-jasmine-browser": "^1.7.1",
+    "gulp-watch": "^4.3.11",
+    "jasmine-node": "^1.14.5"
+  }
 }

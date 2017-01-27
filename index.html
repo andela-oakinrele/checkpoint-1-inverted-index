@@ -15,7 +15,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">INVERTED INDEX </a>
+      <a href="#" class="brand-logo"> INVERTED INDEX </a>
     </div>
   </nav>
   <div class="container">
@@ -62,8 +62,10 @@
       <div class="col s4">
         <div class="index-created"></div>
         <table class="striped index" ng-repeat="(key,value) in files.indices track by $index">
-          <p>{{key}}</p>
           <thead>
+            <tr>
+              <td colspan="3" class="tb-header center-align">{{ key }}</td>
+            </tr>
             <tr>
               <th>Words</th>
               <th ng-repeat="file in files.files[$index] track by $index">Doc {{$index}}</th>
@@ -89,12 +91,12 @@
         <div class="form-group">
           <input type="text" ng-model="files.searchTerms" class="form-control" placeholder="Search">
         </div>
-        <button ng-disabled="Utils.keys(files.indices).length === 0" type="submit" ng-click="files.search();" class="btn btn-default">Submit</button>
+        <button ng-disabled="Utils.keys(files.indices).length === 0" type="submit" ng-click="files.search();" class="btn btn-default">Search</button>
 
         <!--Search-->
         <div class="card" ng-repeat="(searchTerm,content) in files.found track by $index">
           <div class="card-title">
-            <p>{{searchTerm}}</p>
+            <p class="title">{{searchTerm}}</p>
           </div>
           <div class="card-content" ng-repeat="(key,value) in content">
             <span>{{key}}</span>

@@ -48,7 +48,6 @@ describe('Test suite for Inverted Index', () => {
 
   describe('Populate Index', () => {
     const mykeys = Object.keys(myIndex);
-
     it('Should ensure index is created once JSON file has been read', () => {
       expect(typeof myIndex).toBe('object');
       expect(Array.isArray(myIndex)).toBe(false);
@@ -59,11 +58,12 @@ describe('Test suite for Inverted Index', () => {
       expect(myIndex.a).not.toEqual([2]);
     });
     it(`Should ensure each object in JSON array 
-    contains a property whose value is a string.`, () => {
-      for (let i = 0; i < mykeys.length; i++) {
-        expect(typeof mykeys[i]).toBe('string');
-      }
+        contains a property whose value is a string.`, () => {
+      mykeys.forEach((doc) => {
+        expect(typeof doc).toBe('string');
+      });
     });
+
     it('Should ensure index is not overwritten by a new JSON file.', () => {
       expect(Array.isArray(index.indices['books.json'])).toBe(false);
       expect(Array.isArray(index.indices['newfile.json'])).toBe(false);
@@ -82,7 +82,6 @@ describe('Test suite for Inverted Index', () => {
       expect(arrayResult.unusual['books.json']).toEqual([1]);
       expect(arrayResult.alice['books.json']).toEqual([0]);
     });
-
     const variedResult = index
       .searchIndex(['books.json'], 'the', 'lord', 'man');
     it(`Should ensure searchIndex can handle 
@@ -91,7 +90,6 @@ describe('Test suite for Inverted Index', () => {
       expect(variedResult.lord['books.json']).toEqual([1]);
       expect(variedResult.man['books.json']).toEqual([1]);
     });
-
     it('Should ensure search does not take too long to execute.', () => {
       const start = Date.now();
       index.searchIndex(['books.json'], 'alice', 'the', 'man');

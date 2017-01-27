@@ -1,3 +1,13 @@
-.index{
+.index {
   margin-bottom: 15px;
+}
+
+.tb-header {
+  background: darkgrey;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+}
+
+.card-title p {
+  padding-left: 20px;
 }

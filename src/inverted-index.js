@@ -55,17 +55,15 @@ class InvertedIndex {
    * Create index takes single document param
    * and builds an index from it
    * @param {any} filename
-   * @param {any} document
+   * @param {any} parseDoc
    * @returns {any} result
    */
-  createIndex(filename, document) {
+  createIndex(filename, parseDoc) {
     const index = {};
-    if (this.validateDoc(document)) {
-      document.map((sentence, position) => {
+    if (this.validateDoc(parseDoc)) {
+      parseDoc.map((sentence, position) => {
         `${sentence.title} ${sentence.text}`
-        .replace(/[^a-z0-9\s]/gi, '')
-          .toLowerCase()
-          .split(' ')
+        .cleanDoc()
           .map((word) => {
             if (index[word] && index[word].indexOf(position) === -1) {
               index[word].push(position);
@@ -88,6 +86,11 @@ class InvertedIndex {
    * @returns {object} Documents
    */
   searchIndex(filenames, ...terms) {
+    if (filenames !== null) {
+      if (!this.validateFileNames(filenames)) {
+        return 'filename does not exist';
+      }
+    }
     filenames = filenames || Object.keys(this.indices);
     const result = {};
     const searchTerms = terms.flatten();
@@ -104,6 +107,9 @@ class InvertedIndex {
   }
 
   /**
+   * Search
+   * Helps the search method to do the actual search
+   * and returns an empty array if not found
    * @param {Object} index
    * @param {String} term
    * @returns {Array} result
@@ -112,6 +118,23 @@ class InvertedIndex {
   search(index, term) {
     return this.indices[index][term] ? this.indices[index][term] : [];
   }
+
+  /**
+   * validateFileNames
+   * Checks if the filename actually exists
+   * @param {Array} filenames
+   * @returns {boolean} status
+   * @memberOf InvertedIndex
+   */
+  validateFileNames(filenames) {
+    let status = true;
+    filenames.forEach((filename) => {
+      if (!Object.keys(this.indices).includes(filename)) {
+        status = false;
+      }
+    });
+    return status;
+  }
 }
 
 Array.prototype.flatten = function flatten() {
@@ -119,6 +142,11 @@ Array.prototype.flatten = function flatten() {
     item.toLowerCase());
 };
 
+String.prototype.cleanDoc = function cleanDoc() {
+  return this.replace(/[^a-z0-9\s]/gi, '')
+    .toLowerCase()
+    .split(' ');
+};
 if (typeof module === 'object' && module.exports) {
   module.exports = InvertedIndex;
 }

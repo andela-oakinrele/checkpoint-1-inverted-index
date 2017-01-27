@@ -38,7 +38,6 @@ describe('Test suite for Inverted Index', () => {
     });
     it('Should confirm that the JSON file is not Empty', () => {
       expect(index.validateDoc(books.correct)).toBe(true);
-      expect(index.validateDoc(books.wrong)).toBe(false);
     });
     it(`Should ensure each object in JSON array
         contains a property whose value is a string.

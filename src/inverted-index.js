@@ -61,16 +61,16 @@ class InvertedIndex {
   createIndex(filename, document) {
     const index = {};
     if (this.validateDoc(document)) {
-      document.map((sentence, count) => {
+      document.map((sentence, position) => {
         `${sentence.title} ${sentence.text}`
-        .replace(/[^A-Za-z0-9\s]/g, '')
+        .replace(/[^a-z0-9\s]/gi, '')
           .toLowerCase()
           .split(' ')
           .map((word) => {
-            if (index[word] && index[word].indexOf(count) === -1) {
-              index[word].push(count);
+            if (index[word] && index[word].indexOf(position) === -1) {
+              index[word].push(position);
             } else {
-              index[word] = [count];
+              index[word] = [position];
             }
           });
       });

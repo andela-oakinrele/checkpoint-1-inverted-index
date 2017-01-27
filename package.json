@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "gulp",
     "test": "./node_modules/.bin/jasmine",
     "cover": "istanbul cover node_modules/jasmine/bin/jasmine.js",
     "send-cov": "coveralls < coverage/lcov.info",

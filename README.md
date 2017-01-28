@@ -61,6 +61,6 @@ Using this app is very simple and intuitive,
 Link: http://cp-inverted-index.herokuapp.com/
 
 Inspired By
-TIA
+TIA 
 
 Copyright (c) 2017 Akinrele Oluwasinmisola

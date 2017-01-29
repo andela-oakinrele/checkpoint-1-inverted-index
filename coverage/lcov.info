@@ -1,5 +1,5 @@
 TN:
-SF:/Users/oluwasinmisolaakinrele/Documents/www/checkpoint-inv/inverted-index-2/spec/inverted-index-test.js
+SF:/Users/oluwasinmisolaakinrele/Documents/www/checkpoint-inv-2/inverted-index/spec/inverted-index-test.js
 FNF:0
 FNH:0
 DA:1,1
@@ -62,7 +62,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/oluwasinmisolaakinrele/Documents/www/checkpoint-inv/inverted-index-2/src/inverted-index.js
+SF:/Users/oluwasinmisolaakinrele/Documents/www/checkpoint-inv-2/inverted-index/src/inverted-index.js
 FN:2,(anonymous_1)
 FN:7,(anonymous_2)
 FN:11,(anonymous_3)

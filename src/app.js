@@ -56,7 +56,6 @@
       } else {
         Materialize.toast(result);
       }
-      console.log(this.indices);
     };
 
     this.search = function () {

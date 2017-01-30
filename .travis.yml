@@ -5,4 +5,3 @@ script: npm run test
 before_script:
   - npm install
   - npm install gulp
-after_script: npm run cover

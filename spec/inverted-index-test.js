@@ -1,7 +1,9 @@
-if (typeof InvertedIndex === 'undefined') {
-  // eslint-disable-next-line global-require
-  InvertedIndex = require('../src/inverted-index.js');
-}
+import InvertedIndex from '../src/inverted-index';
+// if (typeof InvertedIndex === 'undefined') {
+//   // eslint-disable-next-line global-require
+//   InvertedIndex = require('../src/inverted-index.js');
+// }
+
 
 const books = {
   correct: [{

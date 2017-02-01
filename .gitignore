@@ -28,5 +28,5 @@ node_modules
 .env
 .DS_store
 .vscode
-
-
+src/dist
+spec/test-bundle.js

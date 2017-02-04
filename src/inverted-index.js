@@ -12,9 +12,9 @@ export default class InvertedIndex {
 
   /**
    * GetIndex
-   * *
+   *
    * Gets the index of the files uploaded
-   * *
+   *
    * @param {any} filename
    * @returns {any} void
    */
@@ -24,9 +24,9 @@ export default class InvertedIndex {
 
   /**
    * validateDoc
-   * *
+   *
    * Checks that the uploaded file is valid
-   * *
+   *
    * @param {any} parseDoc
    * @returns {boolean} result
    * @memberOf InvertedIndex
@@ -55,10 +55,10 @@ export default class InvertedIndex {
 
   /**
    * Create index
-   * *
+   *
    * Create index takes single document param
    * and builds an index from it
-   * *
+   *
    * @param {any} filename
    * @param {any} parseDoc
    * @returns {any} result
@@ -85,25 +85,30 @@ export default class InvertedIndex {
 
   /**
    * searchIndex
-   * *
+   *
    * Searches key words from the files that has been uploaded
-   * *
-   * @param {any} filenames
+   *
+   * @param {any} filename
    * @param {any} terms
-   * @returns {object} Documents
+   * @returns {object} results
    */
-  searchIndex(filenames, ...terms) {
-    if (filenames !== null) {
-      if (!this.validateFileNames(filenames)) {
+  searchIndex(filename, ...terms) {
+    const tempFilename = [];
+    if (typeof filename === 'string') {
+      tempFilename.push(filename);
+      filename = tempFilename;
+    }
+    if (filename) {
+      if (!this.validateFileName(filename)) {
         return 'filename does not exist';
       }
     }
-    filenames = filenames || Object.keys(this.indices);
+    filename = filename || Object.keys(this.indices);
     const result = {};
     const searchTerms = terms.flatten();
     searchTerms.forEach((searchTerm) => {
       result[searchTerm] = {};
-      filenames.forEach((index) => {
+      filename.forEach((index) => {
         result[searchTerm][index] = this.indices[index][searchTerm] ?
           this.indices[index][searchTerm] : [];
       });
@@ -112,18 +117,18 @@ export default class InvertedIndex {
   }
 
   /**
-   * validateFileNames
-   * *
+   * validateFileNamesd
+   *
    * Checks if the filename actually exists
-   * *
-   * @param {Array} filenames
+   *
+   * @param {Array} filename
    * @returns {boolean} status
    * @memberOf InvertedIndex
    */
-  validateFileNames(filenames) {
+  validateFileName(filename) {
     let status = true;
-    filenames.forEach((filename) => {
-      if (!Object.keys(this.indices).includes(filename)) {
+    filename.forEach((fileName) => {
+      if (!Object.keys(this.indices).includes(fileName)) {
         status = false;
       }
     });

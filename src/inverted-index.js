@@ -117,7 +117,7 @@ export default class InvertedIndex {
   }
 
   /**
-   * validateFileNamesd
+   * validateFileName
    *
    * Checks if the filename actually exists
    *

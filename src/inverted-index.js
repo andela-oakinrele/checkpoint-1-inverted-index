@@ -93,18 +93,11 @@ export default class InvertedIndex {
    * @returns {object} results
    */
   searchIndex(filenames, ...terms) {
-    if (filenames) {
-      filenames = [filenames];
-    } else {
-      filenames = [];
+    filenames = filenames ? [filenames] : [];
+    if (filenames.length !== 0 && !this.validateFileNames(filenames)) {
+      return ('filename does not exist');
     }
-    if (filenames.length !== 0) {
-      if (!this.validateFileNames(filenames)) {
-        return ('filename does not exist');
-      }
-    } else {
-      filenames = Object.keys(this.indices);
-    }
+    filenames = Object.keys(this.indices);
     const result = {};
     const searchTerms = terms.flatten();
     searchTerms.forEach((searchTerm) => {

@@ -88,27 +88,28 @@ export default class InvertedIndex {
    *
    * Searches key words from the files that has been uploaded
    *
-   * @param {any} filename
+   * @param {any} filenames
    * @param {any} terms
    * @returns {object} results
    */
-  searchIndex(filename, ...terms) {
-    const tempFilename = [];
-    if (typeof filename === 'string') {
-      tempFilename.push(filename);
-      filename = tempFilename;
+  searchIndex(filenames, ...terms) {
+    if (filenames) {
+      filenames = [filenames];
+    } else {
+      filenames = [];
     }
-    if (filename) {
-      if (!this.validateFileName(filename)) {
-        return 'filename does not exist';
+    if (filenames.length !== 0) {
+      if (!this.validateFileNames(filenames)) {
+        return ('filename does not exist');
       }
+    } else {
+      filenames = Object.keys(this.indices);
     }
-    filename = filename || Object.keys(this.indices);
     const result = {};
     const searchTerms = terms.flatten();
     searchTerms.forEach((searchTerm) => {
       result[searchTerm] = {};
-      filename.forEach((index) => {
+      filenames.forEach((index) => {
         result[searchTerm][index] = this.indices[index][searchTerm] ?
           this.indices[index][searchTerm] : [];
       });
@@ -117,18 +118,18 @@ export default class InvertedIndex {
   }
 
   /**
-   * validateFileName
+   * validateFileNames
    *
    * Checks if the filename actually exists
    *
-   * @param {Array} filename
+   * @param {Array} filenames
    * @returns {boolean} status
    * @memberOf InvertedIndex
    */
-  validateFileName(filename) {
+  validateFileNames(filenames) {
     let status = true;
-    filename.forEach((fileName) => {
-      if (!Object.keys(this.indices).includes(fileName)) {
+    filenames.flatten().forEach((filename) => {
+      if (!Object.keys(this.indices).includes(filename)) {
         status = false;
       }
     });

@@ -1,7 +1,7 @@
 /**
  * @class InvertedIndex
  */
-class InvertedIndex {
+export default class InvertedIndex {
   /**
    * @constructor
    */
@@ -12,7 +12,9 @@ class InvertedIndex {
 
   /**
    * GetIndex
+   *
    * Gets the index of the files uploaded
+   *
    * @param {any} filename
    * @returns {any} void
    */
@@ -22,7 +24,9 @@ class InvertedIndex {
 
   /**
    * validateDoc
+   *
    * Checks that the uploaded file is valid
+   *
    * @param {any} parseDoc
    * @returns {boolean} result
    * @memberOf InvertedIndex
@@ -49,23 +53,22 @@ class InvertedIndex {
     return isJSONObject && isNotEmpty && isValidStructure;
   }
 
-
   /**
    * Create index
+   *
    * Create index takes single document param
    * and builds an index from it
+   *
    * @param {any} filename
-   * @param {any} document
+   * @param {any} parseDoc
    * @returns {any} result
    */
-  createIndex(filename, document) {
+  createIndex(filename, parseDoc) {
     const index = {};
-    if (this.validateDoc(document)) {
-      document.map((sentence, position) => {
+    if (this.validateDoc(parseDoc)) {
+      parseDoc.map((sentence, position) => {
         `${sentence.title} ${sentence.text}`
-        .replace(/[^a-z0-9\s]/gi, '')
-          .toLowerCase()
-          .split(' ')
+        .cleanDoc()
           .map((word) => {
             if (index[word] && index[word].indexOf(position) === -1) {
               index[word].push(position);
@@ -81,36 +84,49 @@ class InvertedIndex {
   }
 
   /**
-   * Search method
+   * searchIndex
+   *
    * Searches key words from the files that has been uploaded
+   *
    * @param {any} filenames
    * @param {any} terms
-   * @returns {object} Documents
+   * @returns {object} results
    */
   searchIndex(filenames, ...terms) {
-    filenames = filenames || Object.keys(this.indices);
+    filenames = filenames ? [filenames] : [];
+    if (filenames.length !== 0 && !this.validateFileNames(filenames)) {
+      return ('filename does not exist');
+    }
+    filenames = Object.keys(this.indices);
     const result = {};
     const searchTerms = terms.flatten();
-
-    // eslint-disable-next-line prefer-const
-    for (let searchTerm of searchTerms) {
+    searchTerms.forEach((searchTerm) => {
       result[searchTerm] = {};
-      // eslint-disable-next-line prefer-const
-      for (let index of filenames) {
-        result[searchTerm][index] = this.search(index, searchTerm);
-      }
-    }
+      filenames.forEach((index) => {
+        result[searchTerm][index] = this.indices[index][searchTerm] ?
+          this.indices[index][searchTerm] : [];
+      });
+    });
     return result;
   }
 
   /**
-   * @param {Object} index
-   * @param {String} term
-   * @returns {Array} result
+   * validateFileNames
+   *
+   * Checks if the filename actually exists
+   *
+   * @param {Array} filenames
+   * @returns {boolean} status
    * @memberOf InvertedIndex
    */
-  search(index, term) {
-    return this.indices[index][term] ? this.indices[index][term] : [];
+  validateFileNames(filenames) {
+    let status = true;
+    filenames.flatten().forEach((filename) => {
+      if (!Object.keys(this.indices).includes(filename)) {
+        status = false;
+      }
+    });
+    return status;
   }
 }
 
@@ -119,6 +135,8 @@ Array.prototype.flatten = function flatten() {
     item.toLowerCase());
 };
 
-if (typeof module === 'object' && module.exports) {
-  module.exports = InvertedIndex;
-}
+String.prototype.cleanDoc = function cleanDoc() {
+  return this.replace(/[^a-z0-9\s]/gi, '')
+    .toLowerCase()
+    .split(' ');
+};

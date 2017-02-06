@@ -1,3 +1,4 @@
+import InvertedIndex from './inverted-index';
 /* eslint-disable func-names */
 ((function () {
   const app = angular.module('inverted-index', [])
